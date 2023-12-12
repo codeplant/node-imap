@@ -1,16 +1,33 @@
-{ "name": "imap",
-  "version": "0.8.19",
+{
+  "name": "@codeplant/imap",
+  "version": "1.0.0",
   "author": "Brian White <mscdex@mscdex.net>",
   "description": "An IMAP module for node.js that makes communicating with IMAP servers easy",
   "main": "./lib/Connection",
-  "dependencies": {
-    "utf7": ">=1.0.2"
-  },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
   },
-  "engines": { "node": ">=10.0.0" },
-  "keywords": [ "imap", "mail", "email", "reader", "client" ],
-  "licenses": [ { "type": "MIT", "url": "http://github.com/mscdex/node-imap/raw/master/LICENSE" } ],
-  "repository": { "type": "git", "url": "http://github.com/mscdex/node-imap.git" }
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/mscdex/node-imap/raw/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mscdex/node-imap.git"
+  },
+  "dependencies": {
+    "@codeplant/utf7": "^2.0.0"
+  },
+  "volta": {
+    "node": "18.13.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
